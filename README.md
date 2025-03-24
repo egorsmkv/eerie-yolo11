@@ -27,19 +27,19 @@ python create_cargo_config.py
 ## Download an ONNX version of YOLOv11
 
 ```
-wget "https://huggingface.co/pan93412/yolo-v11-onnx/resolve/main/yolo11x.onnx"
+wget "https://huggingface.co/qualcomm/YOLOv11-Detection/resolve/af104380457eda0e213c91dcddc04d9011c41bb4/YOLOv11-Detection.onnx"
 ```
 
 ## Convert to MLIR
 
 ```
-iree-import-onnx yolo11x.onnx -o yolo11x.mlir
+iree-import-onnx YOLOv11-Detection.onnx -o yolo11.mlir
 ```
 
 ## Compile MLIR to CPU
 
 ```
-iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backends=llvm-cpu --iree-llvmcpu-target-cpu=host -o yolo11x_cpu.vmfb yolo11x.mlir
+iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backends=llvm-cpu --iree-llvmcpu-target-cpu=host -o yolo11_cpu.vmfb yolo11.mlir
 ```
 
 ## Test runtime
@@ -53,7 +53,7 @@ iree-run-module --list_devices
 Run on CPU with zerod tensor:
 
 ```
-iree-run-module --device=local-task --module=yolo11x_cpu.vmfb --input="1x3x640x640xf32=0"
+iree-run-module --device=local-task --module=yolo11_cpu.vmfb --input="1x3x640x640xf32=0"
 ```
 
 ## Build Rust project
