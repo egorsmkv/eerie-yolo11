@@ -1,0 +1,9 @@
+.venv/
+
+/target
+
+*.vmfb
+*.mlir
+*.onnx
+
+*.jpg

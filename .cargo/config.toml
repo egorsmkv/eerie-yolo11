@@ -1,0 +1,6 @@
+[build]
+rustflags = ["-C", "link-arg=-Wl,-rpath,/Users/yehorsmoliakov/Downloads/iree-eerie-yolo/eerie-yolo11/.venv/lib/python3.12/site-packages/iree/compiler/_mlir_libs/"]
+rustdocflags = ["-C", "link-arg=-Wl,-rpath,/Users/yehorsmoliakov/Downloads/iree-eerie-yolo/eerie-yolo11/.venv/lib/python3.12/site-packages/iree/compiler/_mlir_libs"]
+
+[env]
+LIB_IREE_COMPILER = "/Users/yehorsmoliakov/Downloads/iree-eerie-yolo/eerie-yolo11/.venv/lib/python3.12/site-packages/iree/compiler/_mlir_libs"
