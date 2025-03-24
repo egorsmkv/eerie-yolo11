@@ -1,6 +1,5 @@
 use eerie::compiler;
 use eerie::runtime;
-use eerie::runtime::hal::BufferMapping;
 use eerie::runtime::vm::ToRef;
 use eerie::runtime::{
     hal::{BufferMapping, BufferView},
