@@ -21,9 +21,7 @@ python -m pip install iree-base-compiler[onnx]==3.1.0 iree-base-runtime==3.1.0
 ## Set cargo flags
 
 ```
-python -c "import iree.compiler as _; print(f'{_.__path__[0]}/_mlir_libs/')"
-
-# add this path to .cargo/config.toml
+python create_cargo_config.py
 ```
 
 ## Download an ONNX version of YOLOv11
