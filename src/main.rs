@@ -121,7 +121,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // let compiled_bytecode = compile_mlir(&mlir_bytecode);
     // std::fs::write("yolo11x_cpu_2.vmfb", &compiled_bytecode).unwrap();
 
-    let compiled_bytecode = std::fs::read("yolo11x_cpu_2.vmfb").unwrap();
+    let compiled_bytecode = std::fs::read("yolo11_cpu.vmfb").unwrap();
 
     println!("Compiled vmfb in {} ms", start.elapsed().as_millis());
 
