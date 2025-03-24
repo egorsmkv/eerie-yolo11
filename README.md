@@ -6,7 +6,7 @@ My try to run YOLOv11 on IREE with https://github.com/gmmyung/eerie.
 
 ```
 uv venv --python 3.12
-source .venv/bin/activate.fish
+source .venv/bin/activate
 ```
 
 ## Install IREE compiler and runtime
