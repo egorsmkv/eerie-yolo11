@@ -15,7 +15,7 @@ source .venv/bin/activate.fish
 python -m ensurepip --upgrade
 python -m pip install --upgrade pip
 
-python -m pip install iree-base-compiler[onnx]==3.1.0 iree-base-runtime==3.1.0
+python -m pip install iree-base-compiler[onnx]==3.0.0 iree-base-runtime==3.0.0
 ```
 
 ## Set cargo flags
