@@ -1,6 +1,6 @@
 # IREE YOLOv11
 
-My try to run YOLOv11 on IREE.
+My try to run YOLOv11 on IREE with https://github.com/gmmyung/eerie.
 
 ## Create a virtual environment
 
