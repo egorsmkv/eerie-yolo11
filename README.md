@@ -36,7 +36,15 @@ wget "https://huggingface.co/qualcomm/YOLOv11-Detection/resolve/af104380457eda0e
 iree-import-onnx YOLOv11-Detection.onnx -o yolo11.mlir
 ```
 
-## What targets we can compile for?
+## Introspect system
+
+Devices:
+
+```
+iree-run-module --list_devices
+```
+
+Drives:
 
 ```
 iree-run-module --list_drivers
