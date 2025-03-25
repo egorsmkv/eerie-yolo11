@@ -5,6 +5,10 @@ My try to run YOLOv11 on IREE with https://github.com/gmmyung/eerie.
 ## Create a virtual environment
 
 ```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```
 uv venv --python 3.12
 source .venv/bin/activate
 ```
