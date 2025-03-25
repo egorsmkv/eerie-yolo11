@@ -56,7 +56,7 @@ List devices we can run on:
 iree-run-module --list_devices
 ```
 
-Run on CPU with zerod tensor:
+Run on CPU with zeroed tensor:
 
 ```
 iree-run-module --device=local-task --module=yolo11_cpu.vmfb --input="1x3x640x640xf32=0"
