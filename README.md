@@ -62,7 +62,7 @@ Run on CPU with zerod tensor:
 iree-run-module --device=local-task --module=yolo11_cpu.vmfb --input="1x3x640x640xf32=0"
 ```
 
-## Build Rust project
+## Build and Run
 
 ```
 cargo build
