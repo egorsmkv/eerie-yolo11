@@ -54,7 +54,7 @@ fn run(vmfb: &[u8], image_bin: &[f32]) -> Vec<f32> {
 
     let input_buffer = runtime::hal::BufferView::<f32>::new(
         &session,
-        &[1, 640, 640, 3],
+        &[1, 3, 640, 640],
         runtime::hal::EncodingType::DenseRowMajor,
         image_bin,
     )
