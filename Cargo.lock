@@ -312,9 +312,9 @@ checksum = "43da5946c66ffcc7745f48db692ffbb10a83bfe0afd96235c5c2a4fb23994929"
 
 [[package]]
 name = "eerie"
-version = "0.2.2"
+version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4f697edddf865085bb1238c234ff46713c2baf0a353687b1ae3d15e5eaa91c6b"
+checksum = "037d9007658965bb24003913514c685852251b916e366da210e4a813802856f3"
 dependencies = [
  "eerie-sys",
  "log",
@@ -323,11 +323,12 @@ dependencies = [
 
 [[package]]
 name = "eerie-sys"
-version = "0.2.2"
+version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "470184b575c1acd2895b719e7510efd844b8fac49a00a6b671905888664fda89"
+checksum = "6cc3ccec510c709a81b2c5dfa146ccd39b23f4a0119a602e84603dc09d443eaf"
 dependencies = [
  "bindgen",
+ "cc",
  "cmake",
 ]
 

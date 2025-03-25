@@ -15,7 +15,7 @@ source .venv/bin/activate
 python -m ensurepip --upgrade
 python -m pip install --upgrade pip
 
-python -m pip install iree-base-compiler[onnx]==3.3.0 iree-base-runtime==3.3.0
+python -m pip install iree-base-compiler==3.3.0 iree-base-runtime==3.3.0 onnx==1.17.0
 ```
 
 ## Set cargo flags
@@ -36,7 +36,13 @@ wget "https://huggingface.co/qualcomm/YOLOv11-Detection/resolve/af104380457eda0e
 iree-import-onnx YOLOv11-Detection.onnx -o yolo11.mlir
 ```
 
-## Compile MLIR to CPU
+## What targets we can compile for?
+
+```
+iree-run-module --list_drivers
+```
+
+## Compile MLIR for CPU
 
 ```
 iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backends=llvm-cpu --iree-llvmcpu-target-cpu=host -o yolo11_cpu.vmfb yolo11.mlir
@@ -62,4 +68,19 @@ iree-run-module --device=local-task --module=yolo11_cpu.vmfb --input="1x3x640x64
 cargo build
 
 RUST_LOG=trace ./target/debug/eerie-yolo11
+```
+
+
+---
+
+## YOLOv11x
+
+```
+wget "https://huggingface.co/pan93412/yolo-v11-onnx/resolve/main/yolo11x.onnx"
+```
+
+```
+iree-import-onnx yolo11x.onnx -o yolo11x.mlir
+
+iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backends=llvm-cpu --iree-llvmcpu-target-cpu=host -o yolo11x_cpu.vmfb yolo11x.mlir
 ```

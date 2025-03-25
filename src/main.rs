@@ -1,4 +1,4 @@
-use eerie::compiler;
+// use eerie::compiler;
 use eerie::runtime;
 use eerie::runtime::vm::ToRef;
 use eerie::runtime::{
@@ -71,6 +71,8 @@ fn run(vmfb: &[u8], image_bin: &[f32]) -> Vec<f32> {
 
     function.invoke(&input_list, &output_list).unwrap();
 
+    // boxes, scores, class_ids
+
     let output_buffer_ref = output_list.get_ref(0).unwrap();
     let output_buffer: BufferView<f32> = output_buffer_ref.to_buffer_view(&session);
     let output_mapping = BufferMapping::new(output_buffer).unwrap();
@@ -79,38 +81,38 @@ fn run(vmfb: &[u8], image_bin: &[f32]) -> Vec<f32> {
     out
 }
 
-fn compile_mlir(data: &[u8]) -> Vec<u8> {
-    let compiler = compiler::Compiler::new().unwrap();
+// fn compile_mlir(data: &[u8]) -> Vec<u8> {
+//     let compiler = compiler::Compiler::new().unwrap();
 
-    let targets = compiler.get_registered_hal_target_backends();
-    println!("Registered HAL target backends: {:?}", targets);
+//     let targets = compiler.get_registered_hal_target_backends();
+//     println!("Registered HAL target backends: {:?}", targets);
 
-    let mut compiler_session = compiler.create_session();
+//     let mut compiler_session = compiler.create_session();
 
-    compiler_session
-        .set_flags(vec![
-            "--iree-hal-target-backends=llvm-cpu".to_string(),
-            "--iree-input-type=auto".to_string(),
-        ])
-        .unwrap();
+//     compiler_session
+//         .set_flags(vec![
+//             "--iree-hal-target-backends=llvm-cpu".to_string(),
+//             "--iree-input-type=auto".to_string(),
+//         ])
+//         .unwrap();
 
-    let source = compiler_session.create_source_from_buf(data).unwrap();
-    let mut invocation = compiler_session.create_invocation();
-    let mut output = compiler::MemBufferOutput::new(&compiler).unwrap();
+//     let source = compiler_session.create_source_from_buf(data).unwrap();
+//     let mut invocation = compiler_session.create_invocation();
+//     let mut output = compiler::MemBufferOutput::new(&compiler).unwrap();
 
-    invocation
-        .parse_source(source)
-        .unwrap()
-        .set_verify_ir(true)
-        .set_compile_to_phase("end")
-        .unwrap()
-        .pipeline(compiler::Pipeline::Std)
-        .unwrap()
-        .output_vm_byte_code(&mut output)
-        .unwrap();
+//     invocation
+//         .parse_source(source)
+//         .unwrap()
+//         .set_verify_ir(true)
+//         .set_compile_to_phase("end")
+//         .unwrap()
+//         .pipeline(compiler::Pipeline::Std)
+//         .unwrap()
+//         .output_vm_byte_code(&mut output)
+//         .unwrap();
 
-    Vec::from(output.map_memory().unwrap())
-}
+//     Vec::from(output.map_memory().unwrap())
+// }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     env_logger::init();
@@ -139,20 +141,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Run in {} ms", start.elapsed().as_millis());
 
-    // let max_idx = output
-    //     .iter()
-    //     .enumerate()
-    //     .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap())
-    //     .unwrap()
-    //     .0;
+    println!("Output length: {}", output.len());
 
-    println!("{:#?}", output);
+    // let threshold = 0.5;
 
-    // let id2label_file = std::fs::read_to_string("examples/id2label.txt").unwrap();
-
-    // let id2label: Vec<&str> = id2label_file.split("\n").collect();
-
-    // println!("The image is classified as: {}", id2label[max_idx]);
+    // let raw_width = 710;
+    // let raw_height = 533;
 
     Ok(())
 }
