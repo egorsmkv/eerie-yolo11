@@ -58,12 +58,6 @@ iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backe
 
 ## Test runtime
 
-List devices we can run on:
-
-```
-iree-run-module --list_devices
-```
-
 Run on CPU with zeroed tensor:
 
 ```
@@ -77,7 +71,6 @@ cargo build
 
 RUST_LOG=trace ./target/debug/eerie-yolo11
 ```
-
 
 ---
 
