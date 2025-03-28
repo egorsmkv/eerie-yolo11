@@ -87,5 +87,6 @@ wget "https://huggingface.co/pan93412/yolo-v11-onnx/resolve/main/yolo11x.onnx"
 ```
 iree-import-onnx yolo11x.onnx -o yolo11x.mlir
 
-iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backends=llvm-cpu --iree-llvmcpu-target-cpu=host -o yolo11x_cpu.vmfb yolo11x.mlir
+iree-compile --iree-stream-external-resources-mappable=true --iree-hal-target-device=cuda --iree-cuda-target=sm_75 -o yolo11x_cuda.vmfb yolo11x.mlir
 ```
+
