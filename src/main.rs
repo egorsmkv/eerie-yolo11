@@ -33,7 +33,7 @@ fn run(vmfb: &[u8], image_bin: &[f32]) -> Vec<f32> {
     .unwrap();
 
     let device = instance
-        .try_create_default_device("local-task")
+        .try_create_default_device("cuda")
         .expect("Failed to create device");
 
     let session = runtime::api::Session::create_with_device(
@@ -123,7 +123,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // let compiled_bytecode = compile_mlir(&mlir_bytecode);
     // std::fs::write("yolo11x_cpu_2.vmfb", &compiled_bytecode).unwrap();
 
-    let compiled_bytecode = std::fs::read("yolo11_cpu.vmfb").unwrap();
+    let compiled_bytecode = std::fs::read("yolo11_cuda.vmfb").unwrap();
 
     println!("Compiled vmfb in {} ms", start.elapsed().as_millis());
 

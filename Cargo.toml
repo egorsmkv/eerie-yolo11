@@ -5,9 +5,14 @@ edition = "2024"
 
 [dependencies]
 # eerie = { git = "https://github.com/gmmyung/eerie.git" }
-eerie = { version = "0.2.4" }
+eerie = { version = "0.2.6", features = ["cuda"] }
 
 image = "0.25.5"
 ndarray = "0.16.1"
 
 env_logger = "0.11.7"
+
+[profile.release]
+opt-level = 3
+strip = true
+debug = false

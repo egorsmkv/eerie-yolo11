@@ -60,6 +60,12 @@ iree-run-module --list_drivers
 iree-compile --iree-hal-target-device=local --iree-hal-local-target-device-backends=llvm-cpu --iree-llvmcpu-target-cpu=host -o yolo11_cpu.vmfb yolo11.mlir
 ```
 
+## Compile MLIR for CUDA
+
+```
+iree-compile --iree-stream-external-resources-mappable=true --iree-hal-target-device=cuda --iree-cuda-target=sm_60 -o yolo11_cuda.vmfb yolo11.mlir
+```
+
 ## Test runtime
 
 Run on CPU with zeroed tensor:
